@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 110.0
-const DAMAGE_PER_SECOND = 8.0
+const DAMAGE_PER_SECOND = 15
 const VERTICAL_AMPLITUDE = 30.0
 const VERTICAL_SPEED = 0.7
 

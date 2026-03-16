@@ -4,7 +4,7 @@ const SPEED = 110.0
 const DAMAGE_PER_SECOND = 8.0
 const VERTICAL_AMPLITUDE = 30.0
 const VERTICAL_SPEED = 0.7
-const GRAVITY = 980.0
+const GRAVITY = 300.0
 
 
 var _direction: float = 1.0
@@ -12,6 +12,12 @@ var _time: float = 0.0
 var _player_contact: bool = false
 var _player=null
 @export var enemyhealth = 100
+
+const SHOOT_RANGE = 500.0
+const SHOOT_COOLDOWN = 10.0
+var _shoot_timer: float = 0.0
+var _enemy_projectile_scene = preload("res://scenes/enemy_projectile.tscn")
+@export var unlimited_range: bool = false
 
 func _ready() -> void:
 	
@@ -23,6 +29,10 @@ func _ready() -> void:
 	$Sprite2D.flip_h = _direction < 0.0
 	$HurtArea.body_entered.connect(_on_body_entered)
 	$HurtArea.body_exited.connect(_on_body_exited)
+	_shoot_timer = randf_range(2.0, SHOOT_COOLDOWN)
+	await get_tree().process_frame
+	_player = get_tree().current_scene.get_node_or_null("miner")
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "miner":
 		_player_contact = true
@@ -49,6 +59,17 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	$ProgressBar.value = enemyhealth
+	_shoot_timer -= delta
+	if _player != null and _shoot_timer <= 0.0:
+		var dist = global_position.distance_to(_player.global_position)
+		if unlimited_range or dist <= SHOOT_RANGE:
+			_shoot_timer = SHOOT_COOLDOWN
+			var proj = _enemy_projectile_scene.instantiate()
+			proj.global_position = global_position
+			proj.rotation = global_position.direction_to(_player.global_position).angle()
+			if unlimited_range:
+				proj.max_distance = 99999.0
+			get_tree().current_scene.add_child(proj)
 	if _player_contact and !$GPUParticles2D2.emitting and $Timer.is_stopped():
 		$GPUParticles2D2.emitting = true
 		$Timer.start()

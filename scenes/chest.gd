@@ -3,6 +3,7 @@ extends Node2D
 var playertouching = false
 var opened = false
 var pickableitem = preload("res://pickableitems.tscn")
+@export var forced_weapon: String = ""
 
 
 func _ready() -> void:
@@ -31,4 +32,6 @@ func _process(_delta: float) -> void:
 		PromptUI.hide_prompt()
 		$GPUParticles2D.emitting = true
 		var pickableinstance = pickableitem.instantiate()
+		if forced_weapon != "":
+			pickableinstance.forced_weapon_name = forced_weapon
 		add_child(pickableinstance)

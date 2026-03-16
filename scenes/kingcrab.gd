@@ -7,17 +7,34 @@ var _player=null
 var maxhealth = 100
 @export var enemyhealth = 100
 
+const MAJOR_SHOOT_COOLDOWN = 5.0
+var _major_shoot_timer: float = 0.0
+var _enemy_projectile_scene = preload("res://scenes/enemy_projectile.tscn")
+
 func _ready() -> void:
 	
-	maxhealth = (UserInterface.level * 200) + 100
+	maxhealth = int(((UserInterface.level * 200) + 100) * 1.875)
 	enemyhealth = maxhealth
 	$ProgressBar.max_value = enemyhealth
 	# Randomise start time and direction so each stingray feels independent
 	$HurtArea.body_entered.connect(_on_body_entered)
 	$HurtArea.body_exited.connect(_on_body_exited)
+	_major_shoot_timer = MAJOR_SHOOT_COOLDOWN
+	await get_tree().process_frame
+	_player = get_tree().current_scene.get_node_or_null("miner")
 	
 func _process(delta: float) -> void:
 	$ProgressBar.value = enemyhealth
+	_major_shoot_timer -= delta
+	if _player != null and _major_shoot_timer <= 0.0:
+		_major_shoot_timer = MAJOR_SHOOT_COOLDOWN
+		var big_proj = _enemy_projectile_scene.instantiate()
+		big_proj.global_position = global_position
+		big_proj.rotation = global_position.direction_to(_player.global_position).angle()
+		big_proj.damage = 30.0
+		big_proj.max_distance = 99999.0
+		big_proj.scale = Vector2(3, 3)
+		get_tree().current_scene.add_child(big_proj)
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "miner":

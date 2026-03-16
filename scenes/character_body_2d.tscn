@@ -224,12 +224,12 @@ texture = ExtResource("5_rhr3r")
 [node name="WeaponAnimPlayer" type="AnimationPlayer" parent="WeaponPivot" unique_id=617057560]
 libraries/weapon = SubResource("AnimationLibrary_weapon")
 
-[node name="attackarea" type="Area2D" parent="." unique_id=1587476186]
+[node name="attackarea" type="Area2D" parent="WeaponPivot" unique_id=1587476186]
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea" unique_id=268810144]
-position = Vector2(10, -22)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/attackarea" unique_id=268810144]
+position = Vector2(0, -101)
 shape = SubResource("CapsuleShape2D_ws0vm")
 
 [node name="Timer" type="Timer" parent="." unique_id=1231494332]

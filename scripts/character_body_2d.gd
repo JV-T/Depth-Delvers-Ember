@@ -93,9 +93,8 @@ func _physics_process(delta):
 				proj.rotation = angle_to_mouse
 				get_tree().current_scene.add_child(proj)
 				
-			$attackarea.monitorable = true
-			$attackarea.monitoring = true
-			$Timer.start(3.0 / UserInterface.swing_speed)
+			$WeaponPivot/attackarea.monitorable = true
+			$WeaponPivot/attackarea.monitoring = true
 
 func _do_swing() -> void:
 	_is_swinging = true
@@ -105,9 +104,10 @@ func _do_swing() -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "_swing_offset", 1.6, 0.12 / spd) \
 		.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	tween.tween_callback(_disable_hitbox)
 	tween.tween_property(self, "_swing_offset", 0.0, 0.1 / spd) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(func(): _is_swinging = false)
+	tween.tween_callback(_end_attack)
 
 func _do_stab() -> void:
 	_is_swinging = true
@@ -117,9 +117,17 @@ func _do_stab() -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "_stab_offset", 80.0, 0.10 / spd) \
 		.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	tween.tween_callback(_disable_hitbox)
 	tween.tween_property(self, "_stab_offset", 0.0, 0.14 / spd) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(func(): _is_swinging = false)
+	tween.tween_callback(_end_attack)
+
+func _disable_hitbox() -> void:
+	$WeaponPivot/attackarea.monitorable = false
+	$WeaponPivot/attackarea.monitoring = false
+
+func _end_attack() -> void:
+	_is_swinging = false
 
 func _update_weapon() -> void:
 	var w = UserInterface.weapon
@@ -152,5 +160,5 @@ func _update_weapon() -> void:
 		weapon_sprite.position.y = -101
 
 func _on_timer_timeout() -> void:
-	$attackarea.monitorable = false
-	$attackarea.monitoring = false
+	$WeaponPivot/attackarea.monitorable = false
+	$WeaponPivot/attackarea.monitoring = false

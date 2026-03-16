@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://badcxlsojw6ep" path="res://scenes/nextlevel.gd" id="7_413ed"]
 [ext_resource type="PackedScene" uid="uid://baig35tbymnxx" path="res://scenes/kingcrab.tscn" id="8_bied8"]
 [ext_resource type="PackedScene" uid="uid://0veg74najmgo" path="res://scenes/chest.tscn" id="9_gb3xq"]
+[ext_resource type="PackedScene" uid="uid://xj7ppbg44tyb" path="res://scenes/greenchest.tscn" id="10_green"]
 [ext_resource type="PackedScene" uid="uid://dlcjnimc3uxu7" path="res://scenes/babycrab.tscn" id="11_8eofr"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2r41h"]
@@ -1018,8 +1019,9 @@ position = Vector2(-41, -349)
 
 [node name="Chest" parent="." unique_id=282726690 instance=ExtResource("9_gb3xq")]
 position = Vector2(-893, -110)
+forced_weapon = "Crab Spear"
 
-[node name="Chest2" parent="." unique_id=941014602 instance=ExtResource("9_gb3xq")]
+[node name="Chest2" parent="." unique_id=941014602 instance=ExtResource("10_green")]
 position = Vector2(726.9999, -106)
 
 [node name="baby crab" parent="." unique_id=404042479 instance=ExtResource("11_8eofr")]

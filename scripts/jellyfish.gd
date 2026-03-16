@@ -1,7 +1,7 @@
 extends Area2D
 
 const DAMAGE_PER_SECOND = 12.0
-const BOB_SPEED = 3.0
+const BOB_SPEED = 1.0
 const BOB_AMPLITUDE = 180.0
 const DRIFT_SPEED = 0.5
 const DRIFT_RANGE = 400.0

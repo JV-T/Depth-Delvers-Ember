@@ -68,8 +68,11 @@ func _on_button_pressed() -> void:
 	UserInterface.damage_multiplier = 1.0
 	for child in UserInterface.get_children():
 		if child is Timer:
+			if child.timeout.get_connections().size() > 0:
+				child.timeout.disconnect(child.timeout.get_connections()[0].callable)
 			child.queue_free()
 	UserInterface.active_timers.clear()
+	get_tree().paused = false
 	InventoryUI.restart()
 	transition.transition("res://scenes/level.tscn")
 	visible = false

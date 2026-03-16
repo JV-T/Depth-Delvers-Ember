@@ -20,7 +20,6 @@ func _ready() -> void:
 				item_data = w
 				break
 	if item_data.is_empty():
-		# Weights: Cutlass 5, Katana 4, Black Sword 3, Crab Spear 5, Trident 3
 		var weights = [5, 3, 3, 4, 5]
 		var total = 0
 		for w in weights:
@@ -100,7 +99,6 @@ func _process(_delta: float) -> void:
 			queue_free()
 		else:
 			$AudioStreamPlayer.play()
-			# Become the dropped item so the player can swap back
 			item_data = old_item
 			$"item sprite".texture = load(item_data.texture_path)
 			var s2 = item_data.pickup_scale

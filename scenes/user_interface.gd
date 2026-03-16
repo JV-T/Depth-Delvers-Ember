@@ -12,14 +12,12 @@ var swing_speed = 1.0
 var speed_multiplier = 1.0
 var damage_multiplier = 1.0
 var active_timers: Dictionary = {}  # "Speed Potion" -> Timer, "Damage Potion" -> Timer
-# Inventory: 1 weapon slot, 2 powerup slots
 var weapon = null
 var powerups = [null, null]
 var colorpicked = Color(1, 1, 1, 1)
 var world_environment_enabled: bool = true
 
 
-# Always places the item into its slot. Returns the displaced item (or {} if slot was empty).
 func swap_item(item_data: Dictionary) -> Dictionary:
 	if item_data.type == "weapon":
 		var old = weapon if weapon != null else {}
@@ -29,12 +27,10 @@ func swap_item(item_data: Dictionary) -> Dictionary:
 		swing_speed = item_data.get("swing_speed", 1.0)
 		return old
 	elif item_data.type == "powerup":
-		# Fill an empty slot first
 		for i in range(powerups.size()):
 			if powerups[i] == null:
 				powerups[i] = item_data
 				return {}
-		# Both slots full — swap slot 0
 		var old = powerups[0]
 		powerups[0] = item_data
 		return old
@@ -55,7 +51,6 @@ func activate_powerup(item_data: Dictionary) -> void:
 
 
 func _start_timer(duration: float, callback: String, potion_name: String) -> void:
-	# Remove old timer if re-consuming the same potion
 	if active_timers.has(potion_name):
 		active_timers[potion_name].queue_free()
 	var timer = Timer.new()

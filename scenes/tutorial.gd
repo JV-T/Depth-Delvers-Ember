@@ -36,9 +36,13 @@ func _advance_step(from_step: int) -> void:
 			tutorialstep = 5
 			$AnimationPlayer.play("step4finished")
 			await get_tree().create_timer(4.0).timeout
+			if not is_instance_valid(self) or tutorialstep != 5:
+				return
 			tutorialstep = 6
 			$AnimationPlayer.play("step5finished")
 			await get_tree().create_timer(4.0).timeout
+			if not is_instance_valid(self) or tutorialstep != 6:
+				return
 			tutorialstep = 7
 			UserInterface.hasdonetutorial = true
 			$AnimationPlayer.play("step6finished")

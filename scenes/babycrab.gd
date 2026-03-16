@@ -23,7 +23,6 @@ func _ready() -> void:
 	
 	enemyhealth = int(enemyhealth * pow(1.25, UserInterface.level))
 	$ProgressBar.max_value = enemyhealth
-	# Randomise start time and direction so each stingray feels independent
 	_time = randf() * TAU
 	_direction = 1.0 if randf() > 0.5 else -1.0
 	$Sprite2D.flip_h = _direction < 0.0
@@ -41,18 +40,15 @@ func _on_body_entered(body: Node2D) -> void:
 func _physics_process(delta: float) -> void:
 	_time += delta
 
-	# Apply gravity
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	else:
 		velocity.y = 0.0
 
-	# Horizontal patrol only (removed vertical sine drift)
 	velocity.x = _direction * SPEED
 
 	move_and_slide()
 
-	# Reverse on wall hit
 	if is_on_wall():
 		_direction *= -1
 		$Sprite2D.flip_h = _direction < 0.0

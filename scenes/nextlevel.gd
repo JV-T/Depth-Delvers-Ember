@@ -9,6 +9,6 @@ func _on_body_entered(body: Node2D) -> void:
 		if UserInterface.level % 2 == 0:
 			transition.transition("res://scenes/bosslevel.tscn")
 		else:
-			transition.transition(levels[randi_range(0,3)])
+			transition.transition(levels[randi_range(0, levels.size() - 1)])
 		monitorable = false
 		monitoring = false

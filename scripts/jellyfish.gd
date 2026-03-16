@@ -31,7 +31,6 @@ func _process(delta: float) -> void:
 
 	_time += delta
 
-	# Update origin's X to drift linearly, bouncing on contact
 	_origin.x += _drift_direction * DRIFT_SPEED * delta * 60.0
 
 	global_position.y = _origin.y + sin(_time * BOB_SPEED + _phase) * BOB_AMPLITUDE

@@ -15,7 +15,6 @@ func _ready() -> void:
 	
 	enemyhealth = int(enemyhealth * pow(1.25, UserInterface.level))
 	$ProgressBar.max_value = enemyhealth
-	# Randomise start time and direction so each stingray feels independent
 	_time = randf() * TAU
 	_direction = 1.0 if randf() > 0.5 else -1.0
 	$Sprite2D.flip_h = _direction < 0.0
@@ -28,15 +27,13 @@ func _on_body_entered(body: Node2D) -> void:
 		
 func _physics_process(delta: float) -> void:
 	_time += delta
-	# Gliding horizontal patrol with gentle sine-wave vertical drift
 	var drift = sin(_time * VERTICAL_SPEED) * VERTICAL_AMPLITUDE
 	velocity = Vector2(_direction * SPEED, drift)
 	move_and_slide()
 
-	# Reverse on wall hit
 	if is_on_wall():
 		_direction *= -1
-		$Sprite2D.flip_h = _direction > 0.0
+		$Sprite2D.flip_h = _direction < 0.0
 
 func _process(delta: float) -> void:
 	$ProgressBar.value = enemyhealth

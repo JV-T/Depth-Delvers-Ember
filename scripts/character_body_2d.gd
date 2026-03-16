@@ -158,7 +158,3 @@ func _update_weapon() -> void:
 	else:
 		weapon_sprite.position.x = 0
 		weapon_sprite.position.y = -101
-
-func _on_timer_timeout() -> void:
-	$WeaponPivot/attackarea.monitorable = false
-	$WeaponPivot/attackarea.monitoring = false

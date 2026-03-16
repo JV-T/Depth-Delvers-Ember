@@ -36,12 +36,10 @@ func _spawn_enemies() -> void:
 		if used_cells.is_empty():
 			return
 
-		# Build occupied set in cell space
 		var occupied: Dictionary = {}
 		for cell in used_cells:
 			occupied[cell] = true
 
-		# Compute cell-space bounds
 		var min_cx: int = used_cells[0].x
 		var max_cx: int = used_cells[0].x
 		var min_cy: int = used_cells[0].y
@@ -52,7 +50,6 @@ func _spawn_enemies() -> void:
 			if cell.y < min_cy: min_cy = cell.y
 			if cell.y > max_cy: max_cy = cell.y
 
-		# Inset 3 cells from edges to avoid spawning right on the border
 		min_cx += 3; max_cx -= 3
 		min_cy += 3; max_cy -= 3
 
@@ -86,7 +83,6 @@ func _spawn_group(
 	while spawned < count and attempts < max_attempts:
 		attempts += 1
 
-		# Pick a random cell within bounds
 		var cell = Vector2i(
 			randi_range(min_cx, max_cx),
 			randi_range(min_cy, max_cy)
@@ -95,7 +91,6 @@ func _spawn_group(
 		if not _cell_is_open(cell, occupied):
 			continue
 
-		# Convert cell centre to world position
 		var world_pos = tilemap.to_global(tilemap.map_to_local(cell))
 
 		if world_pos.distance_to(player_pos) < MIN_DIST_FROM_PLAYER:
@@ -108,7 +103,6 @@ func _spawn_group(
 
 
 func _cell_is_open(cell: Vector2i, occupied: Dictionary) -> bool:
-	# The cell and all 8 neighbours must be free of tiles
 	for dx in range(-1, 2):
 		for dy in range(-1, 2):
 			if occupied.has(Vector2i(cell.x + dx, cell.y + dy)):

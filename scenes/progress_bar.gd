@@ -8,7 +8,6 @@ func _ready() -> void:
 	min_value = 0.0
 	max_value = 100.0
 
-	# Tank body — dark navy with a blue border
 	var bg_style = StyleBoxFlat.new()
 	bg_style.bg_color = Color(0.05, 0.08, 0.16, 0.93)
 	bg_style.border_color = Color(0.28, 0.52, 0.82, 1.0)
@@ -19,7 +18,6 @@ func _ready() -> void:
 	bg_style.corner_radius_bottom_right = 10
 	add_theme_stylebox_override("background", bg_style)
 
-	# Oxygen fill — bright cyan-blue, left-aligned rounded
 	var fill_style = StyleBoxFlat.new()
 	fill_style.bg_color = Color(0.12, 0.52, 1.0, 0.88)
 	fill_style.corner_radius_top_left = 8
@@ -28,7 +26,6 @@ func _ready() -> void:
 	fill_style.corner_radius_bottom_right = 8
 	add_theme_stylebox_override("fill", fill_style)
 
-	# Centred integer label over the bar
 	_value_label = Label.new()
 	_value_label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -39,7 +36,6 @@ func _ready() -> void:
 	_value_label.add_theme_color_override("font_outline_color", Color(0.0, 0.08, 0.28, 1.0))
 	add_child(_value_label)
 
-	# Small O₂ label above the bar
 	var header = Label.new()
 	header.text = "O\u2082"
 	header.add_theme_font_size_override("font_size", 13)

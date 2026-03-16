@@ -4,7 +4,6 @@ const SPEED_SHEET = preload("res://speedspritesheet2.png")
 const OXYGEN_TANK_TEX = preload("res://OxygenTankNew.png")
 const STRENGTH_POTION_TEX = preload("res://StrengthPotionNew.png")
 
-# Speed potion animation from speedspritesheet2.png, 6 frames of 32x32
 const SPEED_FRAMES = [
 	Rect2(0, 0, 32, 32),
 	Rect2(32, 0, 32, 32),
@@ -94,7 +93,6 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _process(delta: float) -> void:
-	# Animate speed potion glow
 	if item_data.get("name") == "Speed Potion":
 		speed_frame_timer += delta
 		if speed_frame_timer >= SPEED_FRAME_RATE:

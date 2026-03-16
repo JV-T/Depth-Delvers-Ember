@@ -37,14 +37,12 @@ func _build_ui() -> void:
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
 
-	# Dark vignette — tweened separately so content can be brighter
 	_overlay = ColorRect.new()
 	_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_overlay.color = Color(0, 0, 0, 0)
 	_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(_overlay)
 
-	# Content container — tweened independently of overlay
 	_content = Control.new()
 	_content.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_content.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -61,11 +59,9 @@ func _build_ui() -> void:
 	vbox.add_theme_constant_override("separation", 14)
 	center.add_child(vbox)
 
-	# Top decoration line
 	_deco_top = _make_decoration()
 	vbox.add_child(_deco_top)
 
-	# Title shadow label (offset, wide glow outline — rendered first so it's behind)
 	_title_shadow = Label.new()
 	_title_shadow.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_title_shadow.add_theme_font_size_override("font_size", 72)
@@ -74,7 +70,6 @@ func _build_ui() -> void:
 	_title_shadow.add_theme_color_override("font_outline_color", Color(0.9, 0.65, 0.1, 0.22))
 	vbox.add_child(_title_shadow)
 
-	# Title label (actual text, drawn on top)
 	_title_label = Label.new()
 	_title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_title_label.add_theme_font_size_override("font_size", 72)
@@ -85,9 +80,6 @@ func _build_ui() -> void:
 	_title_label.add_theme_constant_override("shadow_offset_x", 0)
 	_title_label.add_theme_constant_override("shadow_offset_y", 0)
 
-	# Lay the glow shadow directly under title using a MarginContainer trick:
-	# instead we just stack them in the same VBox slot via a negative margin overlay
-	# Simpler: use a single Control with two labels overlapping
 	var title_stack = Control.new()
 	title_stack.custom_minimum_size = Vector2(900, 90)
 	_title_shadow.free()  # remove from vbox, will re-add into stack
@@ -107,11 +99,9 @@ func _build_ui() -> void:
 	title_stack.add_child(_title_label)
 	vbox.add_child(title_stack)
 
-	# Bottom decoration line
 	_deco_bottom = _make_decoration()
 	vbox.add_child(_deco_bottom)
 
-	# Subtitle — depth range, cooler blue-white tone
 	_subtitle_label = Label.new()
 	_subtitle_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_subtitle_label.add_theme_font_size_override("font_size", 24)
@@ -169,13 +159,11 @@ func show_layer(layer_num: int, current_depth: String = "") -> void:
 	_tween = create_tween()
 	_tween.set_parallel(true)
 
-	# Fade in: overlay darkens, content brightens
 	_tween.tween_property(_overlay, "color", Color(0, 0, 0, 0.6), 1.1) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	_tween.tween_property(_content, "modulate", Color(1, 1, 1, 1), 1.4) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	# After hold, fade out (sequential chain)
 	_tween.chain().tween_interval(2.4)
 	_tween.chain().set_parallel(true)
 	_tween.tween_property(_content, "modulate", Color(1, 1, 1, 0), 1.0) \

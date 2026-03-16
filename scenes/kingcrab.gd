@@ -16,7 +16,6 @@ func _ready() -> void:
 	maxhealth = int(((UserInterface.level * 200) + 100) * 1.875)
 	enemyhealth = maxhealth
 	$ProgressBar.max_value = enemyhealth
-	# Randomise start time and direction so each stingray feels independent
 	$HurtArea.body_entered.connect(_on_body_entered)
 	$HurtArea.body_exited.connect(_on_body_exited)
 	_major_shoot_timer = MAJOR_SHOOT_COOLDOWN

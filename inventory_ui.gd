@@ -9,7 +9,7 @@ var weapon_icon: TextureRect
 var powerup_icons: Array = []
 var powerup_panels: Array = []
 var powerup_vboxes: Array = []
-var arrow_label: Label
+var arrow_icon: TextureRect
 var timer_container: VBoxContainer
 var timer_labels: Dictionary = {}  # potion_name -> Label
 var selected_slot: int = 0
@@ -32,20 +32,23 @@ func _ready() -> void:
 		powerup_panels.append(pu_vbox.get_meta("panel"))
 		powerup_vboxes.append(pu_vbox)
 
-	# Timer display above inventory
 	timer_container = VBoxContainer.new()
 	timer_container.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	timer_container.position = Vector2(MARGIN, -(MARGIN + SLOT_SIZE + 70))
 	timer_container.add_theme_constant_override("separation", 4)
 	add_child(timer_container)
 
-	# Arrow indicator above the selected slot
-	arrow_label = Label.new()
-	arrow_label.text = "↓"
-	arrow_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	arrow_label.add_theme_font_size_override("font_size", 18)
-	arrow_label.add_theme_color_override("font_color", SELECTED_BORDER)
-	add_child(arrow_label)
+	arrow_icon = TextureRect.new()
+	arrow_icon.texture = load("res://treasure chest/arrow-down-icon-converted-from-webp.png")
+	arrow_icon.custom_minimum_size = Vector2(20, 20)
+	arrow_icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	arrow_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	var arrow_shader = Shader.new()
+	arrow_shader.code = "shader_type canvas_item;\nvoid fragment() {\n\tvec4 tex = texture(TEXTURE, UV);\n\tCOLOR = vec4(1.0, 1.0, 1.0, tex.a);\n}\n"
+	var arrow_mat = ShaderMaterial.new()
+	arrow_mat.shader = arrow_shader
+	arrow_icon.material = arrow_mat
+	add_child(arrow_icon)
 	_update_highlight()
 
 func _make_slot(label_text: String, border_color: Color, keybind: String = "", icon_padding: int = 8) -> VBoxContainer:
@@ -114,17 +117,15 @@ func _update_highlight() -> void:
 			style.border_color = SELECTED_BORDER
 		else:
 			style.border_color = NORMAL_BORDER
-	# Position the arrow above the selected slot
-	if arrow_label and powerup_vboxes.size() > selected_slot:
+	if arrow_icon and powerup_vboxes.size() > selected_slot:
 		await get_tree().process_frame
 		var vbox = powerup_vboxes[selected_slot]
 		var panel = powerup_panels[selected_slot]
 		var panel_center_x = vbox.global_position.x + panel.position.x + SLOT_SIZE / 2.0
-		arrow_label.position = Vector2(panel_center_x - 10, vbox.global_position.y - 22)
+		arrow_icon.position = Vector2(panel_center_x - 10, vbox.global_position.y - 22)
 
 
 func _update_timers() -> void:
-	# Add labels for new active timers
 	for potion_name in UserInterface.active_timers:
 		if not timer_labels.has(potion_name):
 			var label = Label.new()
@@ -134,7 +135,6 @@ func _update_timers() -> void:
 			label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
 			timer_container.add_child(label)
 			timer_labels[potion_name] = label
-	# Update or remove labels
 	var to_remove: Array = []
 	for potion_name in timer_labels:
 		if UserInterface.active_timers.has(potion_name):

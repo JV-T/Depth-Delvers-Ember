@@ -37,7 +37,6 @@ func _spawn_impact_particles() -> void:
 	p.lifetime = 0.5
 	p.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
 	p.emission_rect_extents = Vector2(5, 5)
-	# Deflect slightly backwards from the direction it was traveling
 	p.direction = -transform.x
 	p.spread = 60.0
 	p.gravity = Vector2(0, 600)

@@ -16,5 +16,5 @@ George Sun - Programming
 Bryan Tang - Designing majority art and assets
 
 
-Campfire Leaderboard (We got second place @ Ottawa event!): 
+Campfire Leaderboard (We got second place @ Ottawa event! ): 
 https://podium.hackclub.com/ottawa/vote

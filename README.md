@@ -2,7 +2,7 @@
 
 A dungeon crawler game about a divers descent  into the depths of the ocean. What could await for him? 
 
-Don't drown, dread dwells deep below.
+**Don't drown, dread dwells deep below.**
 
 This is  a continuation of our game developed at Campfire Ottawa!
 

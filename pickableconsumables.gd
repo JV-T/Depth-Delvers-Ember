@@ -1,19 +1,17 @@
 extends Node2D
 
-const ANIM_SHEET = preload("res://Power Ups/platformer items - free assets/animated_items.png")
+const SPEED_SHEET = preload("res://speedspritesheet2.png")
 const OXYGEN_TANK_TEX = preload("res://OxygenTankNew.png")
 const STRENGTH_POTION_TEX = preload("res://StrengthPotionNew.png")
 
-# Gold sparkle animation from animated_items.png, row 8 (y=256), 8 frames of 32x32
+# Speed potion animation from speedspritesheet2.png, 6 frames of 32x32
 const SPEED_FRAMES = [
-	Rect2(0, 256, 32, 32),
-	Rect2(32, 256, 32, 32),
-	Rect2(64, 256, 32, 32),
-	Rect2(96, 256, 32, 32),
-	Rect2(128, 256, 32, 32),
-	Rect2(160, 256, 32, 32),
-	Rect2(192, 256, 32, 32),
-	Rect2(224, 256, 32, 32),
+	Rect2(0, 0, 32, 32),
+	Rect2(32, 0, 32, 32),
+	Rect2(64, 0, 32, 32),
+	Rect2(96, 0, 32, 32),
+	Rect2(128, 0, 32, 32),
+	Rect2(160, 0, 32, 32),
 ]
 const SPEED_FRAME_RATE = 0.1  # 10 fps
 
@@ -31,7 +29,7 @@ var speed_frame_timer: float = 0.0
 
 func _make_speed_texture() -> AtlasTexture:
 	var tex = AtlasTexture.new()
-	tex.atlas = ANIM_SHEET
+	tex.atlas = SPEED_SHEET
 	tex.region = SPEED_FRAMES[speed_frame]
 	return tex
 

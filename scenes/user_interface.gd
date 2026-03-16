@@ -46,7 +46,7 @@ func activate_powerup(item_data: Dictionary) -> void:
 	if item_data.name == "Oxygen Tank":
 		oxygen = min(oxygen + 50, 100)
 	elif item_data.name == "Speed Potion":
-		speed_multiplier = 2.0
+		speed_multiplier = 1.4
 		_start_timer(15.0, "_on_speed_expire", "Speed Potion")
 	elif item_data.name == "Damage Potion":
 		damage_multiplier = 1.5

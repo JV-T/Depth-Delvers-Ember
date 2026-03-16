@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cu8hutp525nml" path="res://losescreen.gd" id="1_g3uia"]
 [ext_resource type="Theme" uid="uid://g3t1lj8d0ewr" path="res://texttheme.tres" id="2_n7u8t"]
 [ext_resource type="FontFile" uid="uid://caumtig8pnegp" path="res://Minecraft.ttf" id="3_ak1a4"]
+[ext_resource type="AudioStream" path="res://drown sfx.mp3" id="4_drown"]
 
 [node name="losescreen" type="CanvasLayer" unique_id=821707658]
 process_mode = 3
@@ -60,5 +61,9 @@ grow_vertical = 0
 theme = ExtResource("2_n7u8t")
 theme_override_font_sizes/font_size = 100
 text = "Play Again"
+
+[node name="DrownSFX" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_drown")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

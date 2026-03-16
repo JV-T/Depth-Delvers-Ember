@@ -41,7 +41,7 @@ func _create_trail() -> void:
 
 func _physics_process(delta):
 	if UserInterface.weapon != null and UserInterface.weapon.name == "Trident":
-		speed = 800 * UserInterface.speed_multiplier
+		speed = 750 * UserInterface.speed_multiplier
 	else:
 		speed = 600 * UserInterface.speed_multiplier
 	var input_vector = Vector2.ZERO

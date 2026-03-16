@@ -172,8 +172,27 @@ func refresh() -> void:
 				powerup_icons[i].texture = item["texture"]
 			elif item.has("texture_path"):
 				powerup_icons[i].texture = load(item.texture_path)
+			if item.get("name") == "Speed Potion":
+				powerup_icons[i].offset_left = 0
+				powerup_icons[i].offset_top = 0
+				powerup_icons[i].offset_right = 0
+				powerup_icons[i].offset_bottom = 0
+			elif item.get("name") == "Damage Potion":
+				powerup_icons[i].offset_left = 2
+				powerup_icons[i].offset_top = 8
+				powerup_icons[i].offset_right = -14
+				powerup_icons[i].offset_bottom = -8
+			else:
+				powerup_icons[i].offset_left = 8
+				powerup_icons[i].offset_top = 8
+				powerup_icons[i].offset_right = -8
+				powerup_icons[i].offset_bottom = -8
 		else:
 			powerup_icons[i].texture = null
+			powerup_icons[i].offset_left = 20
+			powerup_icons[i].offset_top = 20
+			powerup_icons[i].offset_right = -20
+			powerup_icons[i].offset_bottom = -20
 
 
 func restart() -> void:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr6gkpbn8wyvd"
+path="res://.godot/imported/drown sfx.mp3-f9eb96ef5ca0cbf11b769afff2c1e5df.mp3str"
+
+[deps]
+
+source_file="res://drown sfx.mp3"
+dest_files=["res://.godot/imported/drown sfx.mp3-f9eb96ef5ca0cbf11b769afff2c1e5df.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

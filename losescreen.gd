@@ -41,6 +41,7 @@ func _process(_delta: float) -> void:
 	if UserInterface.oxygen <= 0 and not _triggered:
 		_triggered = true
 		visible = true
+		$DrownSFX.play()
 		get_tree().paused = true
 		$highscore.text = "Score: " + str(UserInterface.downmeters) + "m"
 		transition.stop_ambience()

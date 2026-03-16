@@ -32,5 +32,11 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("attack"):
 			if tutorialstep == 4:
 				tutorialstep = 5
-				UserInterface.hasdonetutorial = true
 				$AnimationPlayer.play("step4finished")
+				await get_tree().create_timer(4.0).timeout
+				tutorialstep = 6
+				$AnimationPlayer.play("step5finished")
+				await get_tree().create_timer(4.0).timeout
+				tutorialstep = 7
+				UserInterface.hasdonetutorial = true
+				$AnimationPlayer.play("step6finished")

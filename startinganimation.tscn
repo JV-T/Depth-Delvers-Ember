@@ -336,7 +336,7 @@ grow_vertical = 2
 theme = ExtResource("5_f2fal")
 text = "Play"
 
-[node name="Button3" type="Button" parent="starting menu" unique_id=515528168]
+[node name="Button2" type="Button" parent="starting menu" unique_id=1638440217]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,22 +347,6 @@ offset_left = 454.0
 offset_top = 429.0
 offset_right = 674.0
 offset_bottom = 489.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("5_f2fal")
-text = "Settings"
-
-[node name="Button2" type="Button" parent="starting menu" unique_id=1638440217]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 453.0
-offset_top = 521.0
-offset_right = 673.0
-offset_bottom = 581.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_f2fal")

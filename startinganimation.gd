@@ -1,35 +1,9 @@
 extends CanvasLayer
 
-@onready var settings_menu: Control = $"settings menu"
-var world_environment_checkbox: CheckButton
-
 func _ready() -> void:
 	Parallax2d.visible = false
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.frame = 0
-
-func _on_settings_pressed() -> void:
-	settings_menu.visible = true
-	$Button.hide()
-	$Button2.hide()
-	$Button3.hide()
-	$Button4.hide()
-	$ColorPicker.hide()
-
-
-func _on_settings_back() -> void:
-	settings_menu.visible = false
-	$Button.show()
-	$Button2.show()
-	$Button3.show()
-	$Button4.show()
-
-
-func _on_world_env_toggled(toggled_on: bool) -> void:
-	if UserInterface:
-		UserInterface.world_environment_enabled = toggled_on
-	else:
-		push_error("UserInterface autoload not found")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

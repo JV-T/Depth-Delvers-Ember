@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var tutorialstep = 1
 var _can_progress_tutorial = false
+var _fade_tween: Tween = null
 
 func _ready() -> void:
 	if has_node("tutorial1"):
@@ -9,11 +10,11 @@ func _ready() -> void:
 
 	if !UserInterface.hasdonetutorial:
 		await get_tree().create_timer(5.0).timeout
-		if !UserInterface.hasdonetutorial: # Double-check in case state changed
+		if !UserInterface.hasdonetutorial:
 			_can_progress_tutorial = true
 			if has_node("tutorial1"):
-				var t = create_tween()
-				t.tween_property($tutorial1, "modulate:a", 1.0, 0.5)
+				_fade_tween = create_tween()
+				_fade_tween.tween_property($tutorial1, "modulate:a", 1.0, 0.5)
 			_start_auto_advance(1, 10.0)
 
 func _advance_step(from_step: int) -> void:
@@ -21,6 +22,8 @@ func _advance_step(from_step: int) -> void:
 		return
 	match from_step:
 		1:
+			if _fade_tween and _fade_tween.is_running():
+				_fade_tween.kill()
 			tutorialstep = 2
 			$AnimationPlayer.play("step1finished")
 			_start_auto_advance(2, 10.0)

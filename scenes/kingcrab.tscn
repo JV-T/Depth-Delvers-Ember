@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dhvjwc2m32i4a" path="res://u_nfmiq7z9as-bullethit-449809.mp3" id="7_jff70"]
 [ext_resource type="AudioStream" uid="uid://cjyfew2xl53lk" path="res://dragon-studio-zap-hit-474055.mp3" id="8_o8xpg"]
 [ext_resource type="AudioStream" uid="uid://oalq56bmbo4f" path="res://freesound_community-hit-swing-sword-small-2-95566.mp3" id="9_nsbb1"]
+[ext_resource type="AudioStream" path="res://treasure chest/freesound_community-bubble-sound-43207.mp3" id="10_bubble"]
 
 [sub_resource type="Gradient" id="Gradient_33l23"]
 colors = PackedColorArray(1, 1, 1, 1, 0.043137256, 0.31764707, 1, 0)
@@ -317,6 +318,9 @@ volume_db = -10.681
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1819080762]
 stream = ExtResource("9_nsbb1")
 volume_db = 5.0
+
+[node name="BubbleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bubble")
 
 [connection signal="area_entered" from="HurtArea" to="." method="_on_hurt_area_area_entered"]
 [connection signal="body_entered" from="HurtArea" to="." method="_on_body_entered"]

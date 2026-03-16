@@ -34,7 +34,23 @@ func _process(delta: float) -> void:
 		big_proj.max_distance = 99999.0
 		big_proj.scale = Vector2(3, 3)
 		get_tree().current_scene.add_child(big_proj)
-	
+		$BubbleSFX.play()
+		_fire_delayed_volley()
+
+func _fire_delayed_volley() -> void:
+	for i in range(3):
+		await get_tree().create_timer(2.0).timeout
+		if not is_instance_valid(self) or _player == null or enemyhealth <= 0:
+			return
+		var proj = _enemy_projectile_scene.instantiate()
+		proj.global_position = global_position
+		proj.rotation = global_position.direction_to(_player.global_position).angle()
+		proj.damage = 30.0
+		proj.max_distance = 99999.0
+		proj.scale = Vector2(3, 3)
+		get_tree().current_scene.add_child(proj)
+		$BubbleSFX.play()
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "miner":
 		_player_contact = true

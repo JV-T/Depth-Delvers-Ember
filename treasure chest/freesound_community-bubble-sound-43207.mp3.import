@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2va3ufu1jjde"
+path="res://.godot/imported/freesound_community-bubble-sound-43207.mp3-fe21ae73849438d657db79e8e3ae3079.mp3str"
+
+[deps]
+
+source_file="res://treasure chest/freesound_community-bubble-sound-43207.mp3"
+dest_files=["res://.godot/imported/freesound_community-bubble-sound-43207.mp3-fe21ae73849438d657db79e8e3ae3079.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

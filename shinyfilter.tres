@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ru8uj4qu2kog"]
+
+[ext_resource type="Shader" uid="uid://wmtg14bgtyfc" path="res://pickableitems.gdshader" id="1_c53in"]
+
+[resource]
+shader = ExtResource("1_c53in")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.25999999418848
+shader_parameter/angle = 0.7853982
+shader_parameter/speed = 1.70000002533204
+shader_parameter/wait_cycles = 1.0

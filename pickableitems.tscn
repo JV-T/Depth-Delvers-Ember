@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d0yh5c5gdups2"]
+
+[ext_resource type="Script" uid="uid://opwrikdi5ed4" path="res://pickableitems.gd" id="1_sb4v4"]
+[ext_resource type="Material" uid="uid://ru8uj4qu2kog" path="res://shinyfilter.tres" id="2_pkb47"]
+[ext_resource type="Texture2D" uid="uid://pen4687bluee" path="res://Sword Pack/Black Sword.png" id="2_rc6jy"]
+[ext_resource type="AudioStream" uid="uid://emu674s3srni" path="res://freesound_community-item-equip-6904.mp3" id="4_pkb47"]
+
+[sub_resource type="Animation" id="Animation_wh125"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pkb47"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 4.1410604),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rhxft"]
+_data = {
+&"RESET": SubResource("Animation_wh125"),
+&"open": SubResource("Animation_pkb47")
+}
+
+[node name="pickableitems" type="Node2D" unique_id=943022290]
+script = ExtResource("1_sb4v4")
+
+[node name="item sprite" type="Sprite2D" parent="." unique_id=1680223980]
+texture_filter = 1
+material = ExtResource("2_pkb47")
+scale = Vector2(1, 1.074)
+texture = ExtResource("2_rc6jy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="item sprite" unique_id=355748249]
+libraries/ = SubResource("AnimationLibrary_rhxft")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1346079430]
+stream = ExtResource("4_pkb47")

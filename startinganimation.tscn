@@ -1,0 +1,403 @@
+[gd_scene format=3 uid="uid://ew1tqrjoh82i"]
+
+[ext_resource type="Texture2D" uid="uid://bwsj17de8plyb" path="res://voodoo_cactus_island.png" id="1_shjet"]
+[ext_resource type="Script" uid="uid://c6jfbudu8latv" path="res://startinganimation.gd" id="1_wf68u"]
+[ext_resource type="Texture2D" uid="uid://cs1irhd3p6mhb" path="res://Swimming_Damaged.png" id="3_wf68u"]
+[ext_resource type="Texture2D" uid="uid://b63fgtr067ugy" path="res://pixil-frame-0.png" id="4_5rne6"]
+[ext_resource type="Material" uid="uid://ru8uj4qu2kog" path="res://shinyfilter.tres" id="5_cv0gf"]
+[ext_resource type="Theme" uid="uid://g3t1lj8d0ewr" path="res://texttheme.tres" id="5_f2fal"]
+[ext_resource type="Texture2D" uid="uid://bbbaqfbf0h0wf" path="res://Gold Deluxe Splendid Luxury Jewelry Logo (1).png" id="6_f2fal"]
+[ext_resource type="AudioStream" uid="uid://bos648jr71mx5" path="res://universfield-water-splash-02-352021.mp3" id="8_iptgy"]
+[ext_resource type="AudioStream" uid="uid://dxdfadyokqbal" path="res://universfield-computer-mouse-click-352734.mp3" id="9_xluum"]
+[ext_resource type="AudioStream" uid="uid://ltdj01k46nmg" path="res://scenes/richardmultimedia-ocean-waves-250310.mp3" id="10_1paep"]
+[ext_resource type="AudioStream" uid="uid://cvgj2nxnfhf12" path="res://freesound_community-person-walking-on-rocks-and-sand-100586.mp3" id="10_ehpkd"]
+[ext_resource type="AudioStream" uid="uid://c07d0nlcb4506" path="res://lumora_studios-pixel-jump-319167.mp3" id="10_gqgj8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rne6"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(0, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w6qy"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(32, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv0gf"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(64, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2fal"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(96, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iptgy"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(128, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xluum"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(160, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehpkd"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(192, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqgj8"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(224, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1paep"]
+atlas = ExtResource("3_wf68u")
+region = Rect2(256, 0, 32, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8yu0"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5rne6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w6qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv0gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2fal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iptgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xluum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehpkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqgj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1paep")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Animation" id="Animation_shjet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(170, 461.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../starting menu:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wf68u"]
+resource_name = "startinganimation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.91, 2.65, 3.37),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(170, 461.00003), Vector2(514, 526), Vector2(740, 388), Vector2(886, 730)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.95, 2.65, 3.37),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4363323129985824, 2.3980823922402084, 3.0054569719342363]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.24, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.93),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../starting menu:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.62),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.99),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../jumpingsoundeffect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.9333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5rne6"]
+_data = {
+&"RESET": SubResource("Animation_shjet"),
+&"startinganimation": SubResource("Animation_wf68u")
+}
+
+[sub_resource type="Gradient" id="Gradient_1w6qy"]
+colors = PackedColorArray(1, 1, 1, 1, 0.043137256, 0.31764707, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ond1r"]
+gradient = SubResource("Gradient_1w6qy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cv0gf"]
+particle_flag_disable_z = true
+angle_min = -162.2
+angle_max = 45.00001
+spread = 31.765
+initial_velocity_min = -75.0
+initial_velocity_max = 75.89
+gravity = Vector3(0, -90, 0)
+scale_min = 0.25
+color_ramp = SubResource("GradientTexture1D_ond1r")
+
+[node name="startinganimation" type="CanvasLayer" unique_id=1662690513]
+layer = 999
+script = ExtResource("1_wf68u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=75070149]
+position = Vector2(489.00003, 88.00001)
+texture = ExtResource("1_shjet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854038460]
+texture_filter = 1
+position = Vector2(170, 461.00003)
+scale = Vector2(4, 3.442)
+sprite_frames = SubResource("SpriteFrames_i8yu0")
+autoplay = "default"
+frame_progress = 0.19935107
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=2096759390]
+libraries/ = SubResource("AnimationLibrary_5rne6")
+
+[node name="ColorPicker" type="ColorPicker" parent="." unique_id=1579679332]
+visible = false
+offset_left = 36.0
+offset_top = 32.0
+offset_right = 396.0
+offset_bottom = 639.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=492624257]
+position = Vector2(825, 596)
+emitting = false
+amount = 40
+texture = ExtResource("4_5rne6")
+lifetime = 2.1599999999999997
+explosiveness = 1.0
+randomness = 0.65
+process_material = SubResource("ParticleProcessMaterial_cv0gf")
+
+[node name="settings menu" type="Control" parent="." unique_id=1865378090]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="starting menu" type="Control" parent="." unique_id=83547202]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="starting menu" unique_id=1683063431]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 338.0
+offset_right = 674.0
+offset_bottom = 398.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_f2fal")
+text = "Play"
+
+[node name="Button3" type="Button" parent="starting menu" unique_id=515528168]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 429.0
+offset_right = 674.0
+offset_bottom = 489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_f2fal")
+text = "Settings"
+
+[node name="Button2" type="Button" parent="starting menu" unique_id=1638440217]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 453.0
+offset_top = 521.0
+offset_right = 673.0
+offset_bottom = 581.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_f2fal")
+text = "Customize"
+
+[node name="TextureRect" type="TextureRect" parent="starting menu" unique_id=828970985]
+material = ExtResource("5_cv0gf")
+layout_mode = 0
+offset_left = 249.0
+offset_top = -117.0
+offset_right = 2249.0
+offset_bottom = 1883.0
+scale = Vector2(0.3337355, 0.28599268)
+mouse_filter = 2
+texture = ExtResource("6_f2fal")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2045577143]
+stream = ExtResource("8_iptgy")
+
+[node name="buttonclick" type="AudioStreamPlayer" parent="." unique_id=1689720394]
+stream = ExtResource("9_xluum")
+
+[node name="oceanwaves" type="AudioStreamPlayer" parent="." unique_id=634884370]
+stream = ExtResource("10_1paep")
+autoplay = true
+
+[node name="jumpingsoundeffect" type="AudioStreamPlayer" parent="." unique_id=1845367062]
+stream = ExtResource("10_gqgj8")
+pitch_scale = 0.7
+
+[node name="persononsanmd" type="AudioStreamPlayer" parent="." unique_id=133257147]
+stream = ExtResource("10_ehpkd")
+pitch_scale = 1.63
+
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="starting menu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="starting menu/Button2" to="." method="_on_button_2_pressed"]

@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://bd75ipswg6qls"]
+
+[ext_resource type="Shader" uid="uid://dl2vw27m1khq8" path="res://world_environment.gdshader" id="1_x16oa"]
+[ext_resource type="Script" uid="uid://dcrfy3xpem7wd" path="res://color_rect.gd" id="2_wjtrd"]
+[ext_resource type="Shader" uid="uid://sv4oh2cggpan" path="res://vhsshader.gdshader" id="3_01g3i"]
+[ext_resource type="Script" uid="uid://dy661mv4xttcw" path="res://vhseffect.gd" id="4_t4ycb"]
+[ext_resource type="Script" uid="uid://b020ur11jxggo" path="res://zapeffect.gd" id="5_x002e"]
+[ext_resource type="Script" uid="uid://duo0ot62py15h" path="res://world_environment.gd" id="6_env"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjtrd"]
+shader = ExtResource("1_x16oa")
+shader_parameter/alpha = 0.5
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4ycb"]
+shader = ExtResource("3_01g3i")
+shader_parameter/pixel_size = 3.0
+shader_parameter/vhs_intensity = 0.0
+shader_parameter/noise_intensity = 0.15
+shader_parameter/opacity = 0.5
+
+[sub_resource type="Animation" id="Animation_x002e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0.67058825, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q2kne"]
+resource_name = "blood"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06742423, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0.2627451, 0.3372549), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nwcac"]
+resource_name = "flash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 0.67058825, 0), Color(1, 1, 0.67058825, 0.70980394), Color(1, 1, 0.67058825, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2kne"]
+_data = {
+&"RESET": SubResource("Animation_x002e"),
+&"blood": SubResource("Animation_q2kne"),
+&"flash": SubResource("Animation_nwcac")
+}
+
+[node name="postprocessing" type="CanvasLayer" unique_id=742937369]
+layer = 0
+script = ExtResource("6_env")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=330196780]
+material = SubResource("ShaderMaterial_wjtrd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_wjtrd")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=913902733]
+material = SubResource("ShaderMaterial_t4ycb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_t4ycb")
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=105772117]
+visible = false
+material = SubResource("ShaderMaterial_wjtrd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="zap" type="ColorRect" parent="." unique_id=303181685]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.67058825, 0)
+script = ExtResource("5_x002e")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="zap" unique_id=1255997825]
+libraries/ = SubResource("AnimationLibrary_q2kne")
+speed_scale = 1.5

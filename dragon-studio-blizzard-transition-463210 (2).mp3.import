@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cm6xdn185hqf2"
+path="res://.godot/imported/dragon-studio-blizzard-transition-463210 (2).mp3-cd6d263a9ab27db435663135d8d5bb3c.mp3str"
+
+[deps]
+
+source_file="res://dragon-studio-blizzard-transition-463210 (2).mp3"
+dest_files=["res://.godot/imported/dragon-studio-blizzard-transition-463210 (2).mp3-cd6d263a9ab27db435663135d8d5bb3c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

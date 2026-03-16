@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cwj0hqa0vkqmd"]
+
+[ext_resource type="Script" uid="uid://du1io74yy2imo" path="res://scripts/shark.gd" id="1_ry8r6"]
+[ext_resource type="Texture2D" uid="uid://ct2f5vt3w7urn" path="res://sprites/icon.svg" id="2_kn2uh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5iaq"]
+size = Vector2(524, 109)
+
+[node name="shark" type="CharacterBody2D" unique_id=2102375293]
+script = ExtResource("1_ry8r6")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1348944412]
+position = Vector2(253, 53)
+scale = Vector2(4.140625, 0.828125)
+texture = ExtResource("2_kn2uh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=86543027]
+position = Vector2(252, 44.5)
+shape = SubResource("RectangleShape2D_v5iaq")

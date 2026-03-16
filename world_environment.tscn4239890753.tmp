@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bd75ipswg6qls"]
+
+[ext_resource type="Shader" uid="uid://dl2vw27m1khq8" path="res://world_environment.gdshader" id="1_x16oa"]
+[ext_resource type="Script" uid="uid://dcrfy3xpem7wd" path="res://color_rect.gd" id="2_wjtrd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjtrd"]
+shader = ExtResource("1_x16oa")
+shader_parameter/alpha = 0.5
+shader_parameter/inner_radius = 0.5
+shader_parameter/outer_radius = 1.0
+
+[node name="postprocessing" type="CanvasLayer" unique_id=742937369]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=330196780]
+material = SubResource("ShaderMaterial_wjtrd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_wjtrd")

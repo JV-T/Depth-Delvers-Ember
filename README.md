@@ -7,7 +7,7 @@ Don't drown, dread dwells deep below.
 This is  a continuation of our game developed at Campfire Ottawa!
 
 
-** Credits (For Ember Release and development)
+*Credits (For Ember Release and development)*
 
 Javis Tsai - Programming
 
